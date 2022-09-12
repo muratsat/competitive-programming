@@ -10,7 +10,7 @@ struct Pair {
 
 static const int kMaxStackSize = 200000;
 
-struct Minqueue {
+struct MinStack {
   int Push(int n);
   int Pop();
   int Back();
@@ -23,7 +23,7 @@ struct Minqueue {
   int size_ = 0;
 };
 
-int Minqueue::Push(int n) {
+int MinStack::Push(int n) {
   item_[size_].first = n;
   int min = n;
   if (size_ > 0 && item_[size_ - 1].second < min) {
@@ -34,7 +34,7 @@ int Minqueue::Push(int n) {
   return 0;
 }
 
-int Minqueue::Pop() {
+int MinStack::Pop() {
   if (size_ == 0) {
     return -1;
   }
@@ -42,23 +42,23 @@ int Minqueue::Pop() {
   return item_[size_].first;
 }
 
-int Minqueue::Back() {
+int MinStack::Back() {
   if (size_ == 0) {
     return -1;
   }
   return item_[size_ - 1].first;
 }
 
-int Minqueue::Min() {
+int MinStack::Min() {
   if (size_ == 0) {
     return -1;
   }
   return item_[size_ - 1].second;
 }
 
-int Minqueue::Size() { return size_; }
+int MinStack::Size() { return size_; }
 
-int Minqueue::Clear() {
+int MinStack::Clear() {
   size_ = 0;
   return 0;
 }
@@ -72,7 +72,7 @@ struct MinQueue {
   int Min();
 
  private:
-  Minqueue stack1_, stack2_;
+  MinStack stack1_, stack2_;
 };
 
 int MinQueue::Enqueue(int n) {
